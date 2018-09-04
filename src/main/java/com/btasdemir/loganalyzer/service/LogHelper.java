@@ -3,6 +3,7 @@ package com.btasdemir.loganalyzer.service;
 import com.btasdemir.loganalyzer.domain.Log;
 import com.btasdemir.loganalyzer.model.LogEntry;
 import com.btasdemir.loganalyzer.model.dto.OptionsResourcesDto;
+import com.btasdemir.loganalyzer.util.LogAnalyzerDateUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -32,8 +33,8 @@ public class LogHelper {
         if (blockedIpList.contains(log.getIp())) {
             log.setCauseToBlock(String.format("Ip blocked because of making %d requests between dates %s and %s",
                     optionsResourcesDto.getThreshold(),
-                    optionsResourcesDto.getStartDate().toString(),
-                    optionsResourcesDto.getEndDate().toString()));
+                    LogAnalyzerDateUtils.format(optionsResourcesDto.getStartDate()),
+                    LogAnalyzerDateUtils.format(optionsResourcesDto.getEndDate())));
         }
     }
 

@@ -46,8 +46,8 @@ public class LogHelperTest {
 
         OptionsResourcesDto optionsResourcesDto = new OptionsResourcesDto();
         optionsResourcesDto.setThreshold(1);
-        optionsResourcesDto.setStartDate(LogAnalyzerDateUtils.parseCommandLineArgumentDateValue("2017-01-02.00:00:00.00"));
-        optionsResourcesDto.setEndDate(LogAnalyzerDateUtils.parseCommandLineArgumentDateValue("2017-01-03.00:00:00.00"));
+        optionsResourcesDto.setStartDate(LogAnalyzerDateUtils.parseCommandLineArgumentDateValue("2017-01-02.00:00:00"));
+        optionsResourcesDto.setEndDate(LogAnalyzerDateUtils.parseCommandLineArgumentDateValue("2017-01-03.00:00:00"));
 
         //When
         List<Log> logs = logHelper.convertLogEntriesToLogsAndSetCauseToBlock(logEntries, blockedIps, optionsResourcesDto);
@@ -66,7 +66,7 @@ public class LogHelperTest {
         for (Log log : logs) {
             if (log.getIp().equals("2.2.2.2") || log.getIp().equals("3.3.3.3")) {
                 assertThat(log.getCauseToBlock()).isEqualTo("Ip blocked because of making 1 requests between dates" +
-                        " Mon Jan 02 00:00:00 EET 2017 and Tue Jan 03 00:00:00 EET 2017");
+                        " 2017-01-02.00:00:00 and 2017-01-03.00:00:00");
             }
         }
 
