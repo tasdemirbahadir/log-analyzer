@@ -15,7 +15,7 @@ To run the application, set below program arguments to run configuration:
 
 To run the generated jar, use the below command:
 
-`java -cp "log-analyzer-0.0.1-SNAPSHOT.jar" com.btasdemir.loganalyzer.LogAnalyzerApplication --accesslog=/path/to/file --startDate=2017-01-01.13:00:00 --duration=hourly --threshold=100`
+`java -cp "log-analyzer-0.0.1-SNAPSHOT.jar" org.springframework.boot.loader.JarLauncher --accesslog=access.log --startDate=2017-01-01.13:00:00 --duration=hourly --threshold=100`
 
 **Validating Application**
 
