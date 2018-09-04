@@ -24,6 +24,7 @@ public class LogHelper {
         Log log = new Log();
         log.setDate(logEntry.getDate());
         log.setIp(logEntry.getIp());
+        log.setRequest(logEntry.getRequest());
         setCauseToBlockIfInBlockedIpList(log, blockedIps, optionsResourcesDto);
         return log;
     }

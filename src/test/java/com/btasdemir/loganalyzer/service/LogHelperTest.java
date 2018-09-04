@@ -27,18 +27,22 @@ public class LogHelperTest {
         LogEntry logEntry1 = new LogEntry();
         logEntry1.setIp("1.1.1.1");
         logEntry1.setDate(LogAnalyzerDateUtils.parseLogFileDateValue("2017-01-01 00:00:00.000"));
+        logEntry1.setRequest("\"GET / HTTP/1.1\"");
 
         LogEntry logEntry2 = new LogEntry();
         logEntry2.setIp("2.2.2.2");
         logEntry2.setDate(LogAnalyzerDateUtils.parseLogFileDateValue("2017-01-02 00:00:00.000"));
+        logEntry2.setRequest("\"POST / HTTP/1.1\"");
 
         LogEntry logEntry3 = new LogEntry();
         logEntry3.setIp("3.3.3.3");
         logEntry3.setDate(LogAnalyzerDateUtils.parseLogFileDateValue("2017-01-03 00:00:00.000"));
+        logEntry3.setRequest("\"PUT / HTTP/1.1\"");
 
         LogEntry logEntry4 = new LogEntry();
         logEntry4.setIp("4.4.4.4");
         logEntry4.setDate(LogAnalyzerDateUtils.parseLogFileDateValue("2017-01-04 00:00:00.000"));
+        logEntry4.setRequest("\"DELETE / HTTP/1.1\"");
 
         List<LogEntry> logEntries = Arrays.asList(logEntry1, logEntry2, logEntry3, logEntry4);
 
@@ -60,6 +64,12 @@ public class LogHelperTest {
                 LogAnalyzerDateUtils.parseLogFileDateValue("2017-01-02 00:00:00.000"),
                 LogAnalyzerDateUtils.parseLogFileDateValue("2017-01-03 00:00:00.000"),
                 LogAnalyzerDateUtils.parseLogFileDateValue("2017-01-04 00:00:00.000")
+        );
+        assertThat(logs).extracting("request").contains(
+                "\"GET / HTTP/1.1\"",
+                "\"POST / HTTP/1.1\"",
+                "\"PUT / HTTP/1.1\"",
+                "\"DELETE / HTTP/1.1\""
         );
 
         //And

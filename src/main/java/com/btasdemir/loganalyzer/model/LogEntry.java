@@ -7,6 +7,8 @@ public class LogEntry {
     private Date date;
     private String ip;
 
+    private String request;
+
     public Date getDate() {
         return date;
     }
@@ -21,6 +23,14 @@ public class LogEntry {
 
     public void setIp(String ip) {
         this.ip = ip;
+    }
+
+    public String getRequest() {
+        return request;
+    }
+
+    public void setRequest(String request) {
+        this.request = request;
     }
 
 }

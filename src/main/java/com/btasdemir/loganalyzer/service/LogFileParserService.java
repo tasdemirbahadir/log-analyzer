@@ -21,6 +21,7 @@ public class LogFileParserService {
 
     private static final int FIELDS_DATE_INDEX = 0;
     private static final int FIELDS_IP_INDEX = 1;
+    private static final int FIELDS_REQUEST_INDEX = 2;
 
     public List<LogEntry> parseLogFileLocatedAt(String filePath) throws IOException {
         List<LogEntry> logEntries = new ArrayList<>();
@@ -35,6 +36,7 @@ public class LogFileParserService {
         LogEntry logEntry = new LogEntry();
         logEntry.setDate(parseLogEntryDateValue(fields[FIELDS_DATE_INDEX], line));
         logEntry.setIp(fields[FIELDS_IP_INDEX]);
+        logEntry.setRequest(fields[FIELDS_REQUEST_INDEX]);
         return logEntry;
     }
 
