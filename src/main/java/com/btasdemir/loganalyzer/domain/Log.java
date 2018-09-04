@@ -25,6 +25,9 @@ public class Log {
     @Column(name = "date")
     private Date date;
 
+    @Column(name = "request")
+    private String request;
+
     @Column(name = "cause_to_block")
     private String causeToBlock;
 
@@ -50,6 +53,14 @@ public class Log {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getRequest() {
+        return request;
+    }
+
+    public void setRequest(String request) {
+        this.request = request;
     }
 
     public String getCauseToBlock() {

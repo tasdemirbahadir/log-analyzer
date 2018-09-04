@@ -40,6 +40,7 @@ public class LogFileParserServiceTest {
                 LogAnalyzerDateUtils.parseLogFileDateValue("2017-01-01 00:00:11.763"),
                 LogAnalyzerDateUtils.parseLogFileDateValue("2017-01-01 00:00:21.164")
         );
+        assertThat(parsedLogEntries).extracting("request").contains("\"GET / HTTP/1.1\"", "\"GET / HTTP/1.1\"");
     }
 
     @Test
@@ -56,5 +57,6 @@ public class LogFileParserServiceTest {
                 " CFNetwork/808.2.16 Darwin/15.6.0\""));
         assertThat(parsedLogEntries.get(0).getIp()).isEqualTo("192.168.234.82");
         assertThat(parsedLogEntries.get(0).getDate()).isEqualTo(null);
+        assertThat(parsedLogEntries.get(0).getRequest()).isEqualTo("\"GET / HTTP/1.1\"");
     }
 }

@@ -12,6 +12,7 @@
             </column>
             <column name="ip" type="varchar(50)"/>
             <column name="date" type="datetime"/>
+            <column name="request" type="varchar(255)"/>
             <column name="cause_to_block" type="varchar(255)"/>
         </createTable>
     </changeSet>
