@@ -11,19 +11,23 @@ import java.time.ZoneOffset;
 import java.util.Date;
 
 public class LogAnalyzerDateUtils {
+    private static final SimpleDateFormat cliDateFormat = new SimpleDateFormat("yyyy-MM-dd.HH:mm:ss");
+    private static final SimpleDateFormat logFileDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 
     private LogAnalyzerDateUtils() {
         throw new AssertionError();
     }
 
     public static Date parseCommandLineArgumentDateValue(String dateValue) throws ParseException {
-        final SimpleDateFormat cliDateFormat = new SimpleDateFormat("yyyy-MM-dd.HH:mm:ss");
         return cliDateFormat.parse(dateValue);
     }
 
     public static Date parseLogFileDateValue(String dateValue) throws ParseException {
-        final SimpleDateFormat logFileDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
         return logFileDateFormat.parse(dateValue);
+    }
+
+    public static String format(Date date) {
+        return cliDateFormat.format(date);
     }
 
     public static Date getEndDateAccordingTo(Date startDate, Duration duration) {

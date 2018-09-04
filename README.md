@@ -1,6 +1,6 @@
 **Log Analyzer**
 
-<img src="https://travis-ci.org/tasdemirbahadir/log-analyzer.svg?branch=master"/>
+[![Build Status](https://travis-ci.org/tasdemirbahadir/log-analyzer.svg?branch=master)](https://travis-ci.org/tasdemirbahadir/log-analyzer)
 <br>
 Log Analyzer application analyzes the given log files, detects ips to block according to the given time, duration and threshold and uploads the log entries into H2 in memory database.
 
