@@ -38,3 +38,12 @@ Run below SQL queries for the request info of the two IPs found as the result of
 `select l.ip ip, l.date date, l.request request from log l where l.ip = '192.168.228.188';`
 
 `select l.ip ip, l.date date, l.request request from log l where l.ip = '192.168.77.101';`
+
+**Schema of the Table 'Log' Used In MySQL**
+
+You can checkout the table schema used for the table 'log' below.
+
+id | ip | date | request | cause_to_block
+--- | --- | --- | --- |---
+int8 | varchar(50) | datetime | varchar(255) | varchar(255)
+primary key | | | |
