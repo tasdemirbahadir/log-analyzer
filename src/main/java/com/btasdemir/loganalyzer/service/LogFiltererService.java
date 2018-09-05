@@ -3,6 +3,8 @@ package com.btasdemir.loganalyzer.service;
 import com.btasdemir.loganalyzer.model.LogEntry;
 import com.btasdemir.loganalyzer.model.dto.OptionsResourcesDto;
 import com.btasdemir.loganalyzer.util.LogAnalyzerDateUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class LogFiltererService {
+    private static final Logger logger = LoggerFactory.getLogger(LogFiltererService.class);
 
     public List<String> filterBlockedIpsAndPrintToConsole(List<LogEntry> logEntries,
                                                           OptionsResourcesDto optionsResourcesDto) {
@@ -21,7 +24,7 @@ public class LogFiltererService {
                 .collect(Collectors.collectingAndThen(Collectors.groupingBy(LogEntry::getIp, Collectors.counting()),
                         filterMapByCounts(optionsResourcesDto)))
                 .stream()
-                .peek(System.out::println)
+                .peek(logger::info)
                 .collect(Collectors.toList());
     }
 
