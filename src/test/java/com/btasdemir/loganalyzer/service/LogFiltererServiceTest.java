@@ -47,7 +47,7 @@ public class LogFiltererServiceTest {
 
         LogEntry logEntry3 = new LogEntry();
         logEntry3.setIp("3.3.3.3");
-        logEntry3.setDate(LogAnalyzerDateUtils.parseLogFileDateValue("2017-01-01 02:00:00.000"));
+        logEntry3.setDate(LogAnalyzerDateUtils.parseLogFileDateValue("2017-01-01 01:59:59.999"));
 
         LogEntry logEntry32 = new LogEntry();
         logEntry32.setIp("3.3.3.3");
@@ -101,7 +101,7 @@ public class LogFiltererServiceTest {
 
         LogEntry logEntry3 = new LogEntry();
         logEntry3.setIp("3.3.3.3");
-        logEntry3.setDate(LogAnalyzerDateUtils.parseLogFileDateValue("2017-01-03 01:00:00.000"));
+        logEntry3.setDate(LogAnalyzerDateUtils.parseLogFileDateValue("2017-01-03 00:59:59.999"));
 
         LogEntry logEntry32 = new LogEntry();
         logEntry32.setIp("3.3.3.3");

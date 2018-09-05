@@ -53,8 +53,8 @@ public class LogAnalyzerDateUtils {
         return value.equals(reference) || value.after(reference);
     }
 
-    public static boolean isDateEqualsOrBefore(Date value, Date reference) {
-        return value.equals(reference) || value.before(reference);
+    public static boolean isDateBefore(Date value, Date reference) {
+        return value.before(reference);
     }
 
 }

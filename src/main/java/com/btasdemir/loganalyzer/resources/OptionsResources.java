@@ -2,22 +2,6 @@ package com.btasdemir.loganalyzer.resources;
 
 import java.util.Date;
 
-/**
- * Bahadir Tasdemir - bahadir.tasdemir@hotmail.com.tr
- * <p>
- * This class is used for getting CLI options
- * from args to Spring Context.
- * <p>
- * The values are assigned to static variables
- * and only used by the class 'ArgumentsParserUtils'
- * to assign values and by the class 'LogAnalyzerService'
- * to pass values into a dto.
- * <p>
- * Static variables must be used cautiously so that
- * this values are assigned to a dto and passed with
- * it to the places where the values are needed except
- * the classes mentioned above.
- */
 public class OptionsResources {
 
     private OptionsResources() {

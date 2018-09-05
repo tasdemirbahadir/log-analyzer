@@ -36,7 +36,7 @@ public class LogFiltererService {
 
     private boolean isLogEntryBetweenDates(LogEntry logEntry, OptionsResourcesDto optionsResourcesDto) {
         return LogAnalyzerDateUtils.isDateEqualsOrAfter(logEntry.getDate(), optionsResourcesDto.getStartDate())
-                && LogAnalyzerDateUtils.isDateEqualsOrBefore(logEntry.getDate(), optionsResourcesDto.getEndDate());
+                && LogAnalyzerDateUtils.isDateBefore(logEntry.getDate(), optionsResourcesDto.getEndDate());
     }
 
 }

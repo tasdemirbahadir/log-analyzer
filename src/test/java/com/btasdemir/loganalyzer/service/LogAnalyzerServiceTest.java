@@ -3,7 +3,6 @@ package com.btasdemir.loganalyzer.service;
 import com.btasdemir.loganalyzer.domain.Log;
 import com.btasdemir.loganalyzer.model.LogEntry;
 import com.btasdemir.loganalyzer.model.dto.OptionsResourcesDto;
-import com.btasdemir.loganalyzer.resources.OptionsResources;
 import com.btasdemir.loganalyzer.util.LogAnalyzerDateUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,6 +43,9 @@ public class LogAnalyzerServiceTest {
     @Mock
     private LogHelper logHelper;
 
+    @Mock
+    private OptionsResourcesService optionsResourcesService;
+
     @Captor
     private ArgumentCaptor<List<LogEntry>> logEntriesArgumentCaptor;
 
@@ -53,17 +55,23 @@ public class LogAnalyzerServiceTest {
     @Test
     public void it_should_filter_ips_print_blocked_ones_to_console_and_save_all_logs_into_database() throws IOException, ParseException {
         //Given
-        OptionsResources.setAccessLog("/log/file/path");
-        OptionsResources.setStartDate(LogAnalyzerDateUtils.parseCommandLineArgumentDateValue("2017-01-01.00:00:00.00"));
-        OptionsResources.setEndDate(LogAnalyzerDateUtils.parseCommandLineArgumentDateValue("2017-01-01.00:00:00.00"));
-        OptionsResources.setThreshold(1);
         ArgumentCaptor<String> logFilePathStringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+
+        //get access log file path
+        given(optionsResourcesService.getAccessLog()).willReturn("/log/file/path");
 
         //log file parser service preparation
         LogEntry logEntry1 = new LogEntry();
         LogEntry logEntry2 = new LogEntry();
         List<LogEntry> logEntries = Arrays.asList(logEntry1, logEntry2);
         given(logFileParserService.parseLogFileLocatedAt(anyString())).willReturn(logEntries);
+
+        //get options resources dto
+        OptionsResourcesDto optionsResourcesDto = new OptionsResourcesDto();
+        optionsResourcesDto.setStartDate(LogAnalyzerDateUtils.parseCommandLineArgumentDateValue("2017-01-01.00:00:00.00"));
+        optionsResourcesDto.setEndDate(LogAnalyzerDateUtils.parseCommandLineArgumentDateValue("2017-01-01.00:00:00.00"));
+        optionsResourcesDto.setThreshold(1);
+        given(optionsResourcesService.getOptionsResourcesDto()).willReturn(optionsResourcesDto);
 
         //log filterer service preparation
         ArgumentCaptor<OptionsResourcesDto> optionsResourcesDtoArgumentCaptor = ArgumentCaptor
