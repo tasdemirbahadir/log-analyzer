@@ -23,6 +23,7 @@ public class LogAnalyzerApplicationIT {
     }
 
     @Test
-    public void it_should_load_context() {}
+    public void it_should_load_context() {
+    }
 
 }
